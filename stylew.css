@@ -20,6 +20,8 @@
   --shadow: 0 20px 60px rgba(0,0,0,0.06);
   --transition: 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   --glow: rgba(107, 122, 95, 0.25);
+  --glow-strong: rgba(107, 122, 95, 0.45);
+  --transition: 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
 }
 
 [data-theme="dark"] {
@@ -39,6 +41,7 @@
   --nav-bg: rgba(17,16,9,0.82);
   --shadow: 0 20px 60px rgba(0,0,0,0.35);
   --glow: rgba(138, 155, 122, 0.3);
+  --glow-strong: rgba(138, 155, 122, 0.55);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -227,9 +230,9 @@ body::before {
 }
 .hover-card:hover {
   background: var(--surface);
-  box-shadow: 0 12px 32px var(--shadow), 0 0 0 1px var(--accent-2);
+  box-shadow: 0 12px 40px var(--glow-strong), 0 0 0 1px var(--accent), 0 0 60px var(--glow), inset 0 0 30px var(--glow);
   transform: translateX(6px);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
 }
 
 .cred-label {
@@ -292,9 +295,9 @@ body::before {
 .tag:hover {
   border-color: var(--accent);
   color: var(--text);
-  background: var(--surface-2);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px var(--glow);
+  background: var(--surface);
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px var(--glow), 0 6px 20px var(--glow-strong), 0 0 0 1px var(--accent);
 }
 
 /* COMPETENCY GRID */
@@ -308,8 +311,8 @@ body::before {
 .comp-panel:hover {
   border-color: var(--accent);
   background: var(--surface);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px var(--glow), 0 12px 40px var(--glow-strong), 0 0 0 1px var(--accent), inset 0 0 20px var(--glow);
 }
 .comp-icon { font-size: 0.6rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 16px; }
 .comp-panel h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 12px; }
@@ -330,9 +333,9 @@ body::before {
 }
 .software-card:hover {
   background: var(--surface);
-  transform: scale(1.01);
+  transform: scale(1.02) translateY(-3px);
   border-color: var(--accent);
-  box-shadow: 0 8px 20px var(--glow);
+  box-shadow: 0 0 30px var(--glow), 0 10px 40px var(--glow-strong), 0 0 0 1px var(--accent);
 }
 .sw-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 6px; }
 .sw-type { font-size: 0.6rem; letter-spacing: 2px; color: var(--text-3); margin-bottom: 18px; }
@@ -364,7 +367,8 @@ body::before {
   background: var(--surface);
   padding-left: 38px;
   border-color: var(--accent);
-  transform: translateX(4px);
+  transform: translateX(6px);
+  box-shadow: 0 0 24px var(--glow), 0 6px 24px var(--glow-strong), inset 4px 0 0 var(--accent);
 }
 .interest-num { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--accent); min-width: 32px; }
 .interest-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; flex: 1; }

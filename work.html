@@ -27,6 +27,9 @@
       --accent-light: #7e8f68;
       --accent-soft: #e2e0d4;
       --grid-line: rgba(80, 70, 55, 0.08);
+      --glow: rgba(94, 107, 78, 0.18);
+      --glow-strong: rgba(94, 107, 78, 0.35);
+      --transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
     }
 
     [data-theme="dark"] {
@@ -43,6 +46,8 @@
       --accent-light: #9aad88;
       --accent-soft: #2a2820;
       --grid-line: rgba(200, 180, 140, 0.06);
+      --glow: rgba(138, 155, 122, 0.25);
+      --glow-strong: rgba(138, 155, 122, 0.45);
     }
 
     body {
@@ -185,6 +190,10 @@
       font-weight: 400;
       line-height: 1.1;
       letter-spacing: -0.01em;
+      transition: text-shadow 0.4s;
+    }
+    .title-section h1:hover {
+      text-shadow: 0 0 40px var(--glow-strong);
     }
 
     .title-section h1 em {
@@ -233,8 +242,16 @@
       border: 1px solid var(--border);
       padding: 24px 28px;
       margin-bottom: 28px;
-      transition: all 0.2s;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1);
+      position: relative;
     }
+    .info-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px var(--glow), 0 0 0 1px var(--accent-light), inset 0 0 24px var(--glow);
+      background: var(--surface);
+    }
+    .info-card:hover h3 { color: var(--accent); }
 
     .info-card h3 {
       font-family: 'Cormorant Garamond', serif;
@@ -271,6 +288,15 @@
       letter-spacing: 0.5px;
       color: var(--text-muted);
       border: 1px solid var(--border-light);
+      transition: all 0.25s;
+      cursor: default;
+    }
+    .comp-list span:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+      box-shadow: 0 0 12px var(--glow), 0 2px 8px var(--glow);
+      transform: translateY(-2px);
     }
 
     /* education timeline — tighter */
@@ -281,7 +307,15 @@
       border-left: 1px solid var(--border-light);
       padding-left: 20px;
       position: relative;
+      transition: all 0.3s;
+      padding: 12px 12px 12px 20px;
     }
+    .edu-item:hover {
+      border-left-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: inset 3px 0 0 var(--accent), 0 4px 18px var(--glow);
+    }
+    .edu-item:hover .edu-detail h4 { color: var(--accent); }
 
     .edu-item:last-child {
       margin-bottom: 0;
@@ -338,6 +372,15 @@
       padding: 6px 14px;
       font-size: 0.7rem;
       color: var(--text-muted);
+      transition: all 0.25s;
+      cursor: default;
+    }
+    .course-item:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-soft);
+      box-shadow: 0 0 14px var(--glow), 0 2px 8px var(--glow);
+      transform: translateY(-2px);
     }
 
     /* skills double row */
@@ -373,6 +416,15 @@
       padding: 5px 12px;
       font-size: 0.7rem;
       color: var(--text-muted);
+      transition: all 0.25s;
+      cursor: default;
+    }
+    .skill-items span:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      box-shadow: 0 0 14px var(--glow), 0 2px 8px var(--glow);
+      transform: translateY(-2px);
+      background: var(--accent-soft);
     }
 
     .lang-list {
@@ -382,10 +434,18 @@
     .lang-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
+      padding: 10px 14px;
       border-bottom: 1px solid var(--border-light);
       font-size: 0.8rem;
+      transition: all 0.25s;
+      cursor: default;
+      margin: 0 -14px;
     }
+    .lang-item:hover {
+      background: var(--accent-soft);
+      box-shadow: 0 2px 16px var(--glow);
+    }
+    .lang-item:hover span:first-child { color: var(--accent); }
 
     .lang-item span:first-child {
       font-weight: 400;
