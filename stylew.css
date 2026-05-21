@@ -451,3 +451,160 @@ body::before {
   letter-spacing: 2px;
   color: var(--text-3);
 }
+/* ══════════════════════════════════════
+   ENHANCED RESPONSIVE — stylew.css
+══════════════════════════════════════ */
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1100;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── Mobile Nav Overlay ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 9vw, 3.6rem);
+  font-weight: 300;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 2px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  width: 70%;
+  text-align: center;
+  transition: color 0.3s, letter-spacing 0.3s;
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--accent); letter-spacing: 4px; }
+
+/* ── TABLET: 768–1000px ── */
+@media (max-width: 1000px) {
+  .credentials-body { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 24px 5%;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 0;
+  }
+  .sidebar-nav a {
+    padding: 8px 14px;
+    border-left: none;
+    border: 1px solid var(--border);
+    font-size: 0.65rem;
+  }
+  .sidebar-nav a:hover, .sidebar-nav a.active {
+    padding-left: 14px;
+    border-color: var(--accent);
+  }
+  .sidebar-contact { border-top: none; padding-top: 0; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .sidebar-contact h4 { margin-bottom: 0; }
+  .sidebar-contact a { margin-bottom: 0; }
+
+  .main-content { padding: 50px 5%; max-width: 100%; }
+  .page-header { grid-template-columns: 1fr; gap: 30px; padding: 120px 5% 60px; }
+  .software-grid { grid-template-columns: 1fr 1fr; }
+  .competency-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── MOBILE: ≤ 768px ── */
+@media (max-width: 768px) {
+  .navbar { padding: 0 5%; height: 64px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: flex; }
+
+  .page-header {
+    padding: 90px 5% 50px;
+    gap: 24px;
+  }
+  .page-header h1 { font-size: clamp(2.8rem, 10vw, 4.5rem); }
+  .profile-card { padding: 22px 20px; }
+
+  .main-content { padding: 40px 5%; }
+
+  .cred-label { margin-bottom: 28px; }
+  .cred-label h2 { font-size: 1.5rem; }
+
+  .software-grid { grid-template-columns: 1fr; gap: 2px; }
+  .competency-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  .tag-cloud { gap: 8px; }
+  .tag { padding: 8px 16px; font-size: 0.72rem; }
+
+  .interest-item { padding: 18px 20px; gap: 18px; }
+  .interest-title { font-size: 1rem; }
+  .interest-tag { display: none; }
+
+  .timeline-title { font-size: 1.2rem; }
+
+  .hover-card { margin-left: 0; margin-right: 0; padding: 20px 0; }
+  .hover-card:hover { transform: none; margin-left: 0; }
+
+  .page-footer { padding: 36px 5%; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+}
+
+/* ── SMALL MOBILE: ≤ 480px ── */
+@media (max-width: 480px) {
+  .navbar { padding: 0 4%; }
+  .logo { font-size: 1.1rem; letter-spacing: 3px; }
+
+  .page-header { padding: 80px 4% 40px; }
+  .main-content { padding: 30px 4%; }
+
+  .competency-grid { grid-template-columns: 1fr; }
+  .comp-panel { padding: 22px 18px; }
+
+  .software-card { padding: 22px 18px; }
+  .sw-name { font-size: 1rem; }
+
+  .interest-item { flex-wrap: wrap; padding: 16px; }
+
+  .sidebar { padding: 20px 4%; }
+  .sidebar-nav a { padding: 7px 12px; font-size: 0.62rem; }
+}

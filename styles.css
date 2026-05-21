@@ -899,3 +899,150 @@ footer {
   .contact-link { flex-direction: column; align-items: flex-start; gap: 10px; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+/* ══════════════════════════════════════
+   ENHANCED RESPONSIVE — MOBILE FIRST
+══════════════════════════════════════ */
+
+/* ── Hamburger Menu ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1100;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── Mobile Nav Overlay ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-nav.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  font-weight: 300;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 2px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  width: 70%;
+  text-align: center;
+  transition: color 0.3s, letter-spacing 0.3s;
+}
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--accent); letter-spacing: 4px; }
+
+/* ── TABLET: 900–1100px ── */
+@media (max-width: 1100px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 110px;
+    padding-bottom: 80px;
+    gap: 50px;
+    min-height: auto;
+  }
+  .hero::before { display: none; }
+  .hero-left { padding-right: 0; max-width: 600px; }
+  .hero-right { padding-left: 0; display: flex; flex-direction: column; align-items: flex-start; }
+  .hero-image-frame img { max-width: 360px; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 50px; }
+  .about-image-wrap { position: static; display: flex; flex-direction: column; align-items: flex-start; }
+  .about-img-container img { max-width: 320px; }
+
+  .skills-layout { grid-template-columns: 1fr; gap: 50px; }
+  .skills-intro { position: static; }
+
+  footer { gap: 40px; padding: 80px 6% 50px; }
+}
+
+/* ── MOBILE: ≤ 768px ── */
+@media (max-width: 768px) {
+  .navbar { padding: 0 5%; height: 68px; }
+  .nav-right { gap: 16px; }
+  .nav-links { display: none; } /* hidden — hamburger takes over */
+  .hamburger { display: flex; }
+
+  .hero { padding: 90px 5% 60px; gap: 40px; }
+  .hero h1 { font-size: clamp(3rem, 12vw, 4.5rem); margin-bottom: 28px; }
+  .hero-eyebrow { margin-bottom: 28px; }
+  .hero-description { font-size: 0.88rem; margin-bottom: 40px; max-width: 100%; }
+  .hero-image-frame img { max-width: 100%; width: 100%; }
+  .hero-caption { writing-mode: horizontal-tb; transform: none; bottom: auto; top: calc(100% + 10px); right: 0; }
+
+  .scroll-indicator { display: none; }
+
+  section { padding: 70px 5%; }
+  .section-label { margin-bottom: 40px; }
+
+  .about-img-container img { max-width: 280px; }
+  .about-intro { font-size: clamp(1.4rem, 5vw, 2rem); margin-bottom: 32px; }
+  .about-body p { font-size: 0.9rem; line-height: 1.9; }
+  .about-quote { padding: 28px 24px; margin-top: 40px; }
+  .about-quote p { font-size: 1.3rem; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-item { padding: 26px 24px; }
+
+  .contact-link { flex-direction: column; align-items: flex-start; gap: 8px; padding: 22px 0; }
+  .contact-link span:first-child { font-size: 1.3rem; }
+  .contact-link span:last-child { font-size: 0.65rem; letter-spacing: 2px; }
+  .contact-link:hover { padding-left: 12px; padding-right: 0; }
+
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  footer { padding: 60px 5% 40px; gap: 40px; }
+  .footer-top h2 { font-size: clamp(2.5rem, 10vw, 4rem); }
+}
+
+/* ── SMALL MOBILE: ≤ 480px ── */
+@media (max-width: 480px) {
+  .navbar { padding: 0 4%; }
+  .logo { font-size: 1.1rem; letter-spacing: 3px; }
+
+  .hero { padding: 80px 4% 50px; }
+  .hero h1 { font-size: clamp(2.6rem, 14vw, 3.8rem); }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .btn-primary { padding: 14px 24px; font-size: 0.72rem; }
+
+  section { padding: 60px 4%; }
+
+  .about-img-container img { max-width: 240px; }
+  .about-quote { padding: 22px 20px; }
+
+  .skills-tags span { font-size: 0.72rem; padding: 7px 14px; }
+
+  .footer-bottom span { font-size: 0.65rem; }
+}
