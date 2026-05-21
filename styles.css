@@ -113,7 +113,7 @@ body::after {
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border-bottom: 1px solid var(--border);
-  z-index: 1000;
+  z-index: 1001;
   transition: background var(--transition), border-color var(--transition);
 }
 
@@ -835,6 +835,7 @@ footer {
   cursor: pointer;
   padding: 4px;
   z-index: 1100;
+  flex-shrink: 0;
 }
 .hamburger span {
   display: block;
@@ -850,7 +851,7 @@ footer {
 
 /* ── Mobile Nav Overlay ── */
 .mobile-nav {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background: var(--bg);
@@ -861,11 +862,13 @@ footer {
   gap: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .mobile-nav.open {
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
 }
 .mobile-nav a {
   font-family: 'Cormorant Garamond', serif;
